@@ -38,7 +38,7 @@ function crawlUserdata(){
     var year = (currentDate.getUTCFullYear())
     var timestamp = year + ("0"+month).slice(-2) + ("0"+day).slice(-2)
 
-    moves.getStoryline(time, function(err,data){
+    moves.getStoryline(timestamp, function(err,data){
       console.log(JSON.stringify(data))
     })
 }
