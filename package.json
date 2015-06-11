@@ -4,6 +4,7 @@
   "description": "Display your locations on a map",
   "dependencies": {
     "http": "0.0.0",
-    "httpdispatcher": "^0.4.0"
+    "httpdispatcher": "^0.4.0",
+    "moves-api": "0.0.4"
   }
 }
