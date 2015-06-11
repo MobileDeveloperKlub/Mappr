@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Display your locations on a map",
   "dependencies": {
+    "fs": "0.0.2",
     "http": "0.0.0",
     "httpdispatcher": "^0.4.0",
     "moves-api": "0.0.4"

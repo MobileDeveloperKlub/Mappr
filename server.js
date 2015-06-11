@@ -3,12 +3,13 @@ var dispatcher = require('httpdispatcher')
 var request = require('request')
 var movesApi = require('moves-api').MovesApi
 var moves = new movesApi()
+var fs = require('fs')
 
 var server = http.createServer(handleRequest)
 var port = 1243
 
 moves.options.accessToken = 'TOKEN'
-crawlUserdata()
+updateUserData()
 
 server.listen(port, function(){
   console.log("Server listening on: http://localhost:%s", port)
@@ -29,6 +30,14 @@ dispatcher.onPost('/api/rest', function(req,res){
   res.end()
 })
 
+
+function updateUserData(){
+    crawlUserdata()
+    setTimeout(function(){
+        crawlUserdata()
+    },86400000)
+}
+
 function crawlUserdata(){
     var dateObj = new Date()
     var month = (dateObj.getUTCMonth() + 1).toString() //months from 1-12
@@ -42,6 +51,7 @@ function crawlUserdata(){
 
    moves.getStoryline(time, function(err,data){
     console.log(JSON.stringify(data))
+    fs.writeFileSync('./test.txt', JSON.stringify(data,null,2))
    })
 }
 
