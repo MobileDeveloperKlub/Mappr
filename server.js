@@ -1,8 +1,20 @@
 var http = require('http')
 var dispatcher = require('httpdispatcher')
+var request = require('request')
+var movesApi = require('moves-api').MovesApi
+var moves = new movesApi()
+ moves.options.accessToken = 'TOKEN'
+
+
+
 var port = 1243
 
 var server = http.createServer(handleRequest)
+
+crawlUserdata()
+
+
+
 server.listen(port, function(){
     console.log("Server listening on: http://localhost:%s", port)
 })
@@ -22,5 +34,13 @@ dispatcher.onPost('/api/rest', function(req,res){
 	res.write(JSON.stringify(req.params))
 	res.end()
 })
+
+
+function crawlUserdata(){
+    console.log('test')
+        moves.getProfile(function(err, profile) {
+        console.log(profile)
+    })
+}
 
 
