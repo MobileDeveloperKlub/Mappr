@@ -7,7 +7,9 @@ var moves = new movesApi()
 var server = http.createServer(handleRequest)
 var port = 1243
 
-moves.options.accessToken = 'TOKEN'
+var config = require('./config')
+
+moves.options.accessToken = config.accessToken
 crawlUserdata()
 
 server.listen(port, function(){
