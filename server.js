@@ -3,7 +3,7 @@ var dispatcher = require('httpdispatcher')
 var request = require('request')
 var movesApi = require('moves-api').MovesApi
 var moves = new movesApi()
- moves.options.accessToken = 'TOKEN'
+ moves.options.accessToken = 'TOEKN'
 
 
 
@@ -37,10 +37,19 @@ dispatcher.onPost('/api/rest', function(req,res){
 
 
 function crawlUserdata(){
-    console.log('test')
-        moves.getProfile(function(err, profile) {
-        console.log(profile)
-    })
+    var dateObj = new Date()
+    var month = (dateObj.getUTCMonth() + 1).toString() //months from 1-12
+    month=("0"+month).slice(-2)
+    var day = (dateObj.getUTCDate()).toString()
+    day = ("0"+day).slice(-2)
+    var year = (dateObj.getUTCFullYear()).toString()
+    var time = ''
+    console.log(month,day,year)
+    time = year+month+day
+
+   moves.getStoryline(time, function(err,data){
+    console.log(JSON.stringify(data))
+   })
 }
 
 
