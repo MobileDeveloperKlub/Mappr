@@ -11,29 +11,26 @@ moves.options.accessToken = 'TOKEN'
 crawlUserdata()
 
 server.listen(port, function(){
-    console.log("Server listening on: http://localhost:%s", port)
+  console.log("Server listening on: http://localhost:%s", port)
 })
 
 function handleRequest(request, response){
-    try {
-        console.log(request.url)
-        dispatcher.dispatch(request, response)
-    } catch(err) {
-        console.log(err)
-    }
+  try {
+    console.log(request.url)
+    dispatcher.dispatch(request, response)
+  } catch(err) {
+    console.log(err)
+  }
 }
 
 dispatcher.onPost('/api/rest', function(req,res){
-    res.writeHead(200, {'Content-Type': 'application/json'})
-    res.write(JSON.stringify(req.params))
-    res.end()
+  res.writeHead(200, {'Content-Type': 'application/json'})
+  res.write(JSON.stringify(req.params))
+  res.end()
 })
 
 function crawlUserdata(){
-    console.log('test')
-        moves.getProfile(function(err, profile) {
-        console.log(profile)
-    })
+
 }
 
 
