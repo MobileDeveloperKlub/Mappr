@@ -30,19 +30,15 @@ dispatcher.onPost('/api/rest', function(req,res){
 })
 
 function crawlUserdata(){
-    var dateObj = new Date()
-    var month = (dateObj.getUTCMonth() + 1).toString() //months from 1-12
-    month=("0"+month).slice(-2)
-    var day = (dateObj.getUTCDate()).toString()
-    day = ("0"+day).slice(-2)
-    var year = (dateObj.getUTCFullYear()).toString()
-    var time = ''
-    console.log(month,day,year)
-    time = year+month+day
+    var currentDate = new Date()
+    var month = currentDate.getUTCMonth() + 1
+    var day = (currentDate.getUTCDate())
+    var year = (currentDate.getUTCFullYear())
+    var timestamp = year + ("0"+month).slice(-2) + ("0"+day).slice(-2)
 
-   moves.getStoryline(time, function(err,data){
-    console.log(JSON.stringify(data))
-   })
+    moves.getStoryline(time, function(err,data){
+      console.log(JSON.stringify(data))
+    })
 }
 
 
