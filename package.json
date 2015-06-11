@@ -6,6 +6,7 @@
     "fs": "0.0.2",
     "http": "0.0.0",
     "httpdispatcher": "^0.4.0",
-    "moves-api": "0.0.4"
+    "moves-api": "0.0.4",
+    "request": "^2.57.0"
   }
 }

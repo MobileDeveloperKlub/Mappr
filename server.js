@@ -7,9 +7,10 @@ var fs = require('fs')
 
 var server = http.createServer(handleRequest)
 var port = 1243
+var config = require('./config')
 
-moves.options.accessToken = 'TOKEN'
-updateUserData()
+moves.options.accessToken = config.accessToken
+crawlUserdata()
 
 server.listen(port, function(){
   console.log("Server listening on: http://localhost:%s", port)
