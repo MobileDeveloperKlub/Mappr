@@ -4,7 +4,7 @@ var request = require('request')
 var movesApi = require('moves-api').MovesApi
 var moves = new movesApi()
 var fs = require('fs')
-var db = require('./mongo')
+var dbApi = require('./dbApi')
 
 
 var server = http.createServer(handleRequest)
@@ -53,7 +53,8 @@ function crawlUserdata(){
     time = year+month+day
 
    moves.getStoryline(time, function(err,data){
-    console.log(JSON.stringify(data))
+    // console.log(JSON.stringify(data))
     fs.writeFileSync('./test.txt', JSON.stringify(data,null,2))
+    dbApi.savePlaces(data[0].segments)
    })
 }
