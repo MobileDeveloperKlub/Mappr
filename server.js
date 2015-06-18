@@ -4,7 +4,7 @@ var request = require('request')
 var movesApi = require('moves-api').MovesApi
 var moves = new movesApi()
 var fs = require('fs')
-var db = require('db')
+var db = require('./mongo')
 
 
 var server = http.createServer(handleRequest)
