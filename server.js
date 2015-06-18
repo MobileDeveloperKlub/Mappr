@@ -45,7 +45,7 @@ function crawlUserdata(){
     var dateObj = new Date()
     var month = (dateObj.getUTCMonth() + 1).toString() //months from 1-12
     month=("0"+month).slice(-2)
-    var day = (dateObj.getUTCDate()).toString()
+    var day = (dateObj.getUTCDate()-4).toString()
     day = ("0"+day).slice(-2)
     var year = (dateObj.getUTCFullYear()).toString()
     var time = ''
