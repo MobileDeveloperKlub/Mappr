@@ -4,6 +4,8 @@ var request = require('request')
 var movesApi = require('moves-api').MovesApi
 var moves = new movesApi()
 var fs = require('fs')
+var db = require('db')
+
 
 var server = http.createServer(handleRequest)
 var port = 1243
@@ -55,5 +57,3 @@ function crawlUserdata(){
     fs.writeFileSync('./test.txt', JSON.stringify(data,null,2))
    })
 }
-
-
